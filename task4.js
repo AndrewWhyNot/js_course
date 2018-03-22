@@ -1,8 +1,9 @@
 
-function MyGraph(edge_array) {
-    this.edges = edge_array;
+class MyGraph {
     
-    
+    constructor(edge_array) {
+        this.edges = edge_array;
+    }
     
     /////////////////////////////////
     //                             //
@@ -10,7 +11,7 @@ function MyGraph(edge_array) {
     //                             //
     /////////////////////////////////
     
-    this.DFSstep = function(vertex, visited_vertices) {
+    DFSstep(vertex, visited_vertices) {
         let verts = visited_vertices;
         for (let i = 0; i < this.edges.length; i++) {
             let elem = this.edges[i];
@@ -31,7 +32,7 @@ function MyGraph(edge_array) {
         return verts;
     }
     
-    this.DFS = function() {
+    DFS() {
         console.log("DFS:");
         let visited_vertices = this.DFSstep(0, "0");
         
@@ -45,7 +46,7 @@ function MyGraph(edge_array) {
     //                             //
     /////////////////////////////////
     
-    this.BFS = function() {
+    BFS() {
         console.log("BFS:");
         let visited_vertices = "0";
         let ind = 0;
@@ -78,7 +79,7 @@ function MyGraph(edge_array) {
     //                             //
     /////////////////////////////////
     
-    this.LWPstep = function(vert, state) {
+    LWPstep(vert, state) {
         let nextVertices = [];
         this.edges.forEach(function(elem) {
                            let newVertex = -1;
@@ -102,7 +103,7 @@ function MyGraph(edge_array) {
         return [nextVertices, state];
     }
     
-    this.least_weight_path = function(stV, endV) {
+    least_weight_path(stV, endV) {
         if (this.edges[0].length != 3) {
             console.log("Graph has no weights!");
             return;
